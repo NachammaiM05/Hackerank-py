@@ -1,0 +1,104 @@
+6/5
+TASK
+LEETCODE
+3. Longest Substring Without Repeating Characters
+Given a string s, find the length of the longest substring without duplicate characters.
+Example 1:
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+Example 2:
+Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+Example 3:
+Input: s = "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3.
+Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+Constraints:
+0 < s. length <= 5 * 104
+S consists of English letters, digits, symbols and spaces.
+
+SOLUTION
+*******************************************
+if __name__ == '__main__':
+    n = int(input())
+    student_marks = {}
+    
+    for _ in range(n):
+        line = input().split()
+        name = line[0]
+        scores = list(map(float, line[1:]))  # Convert marks to float
+        student_marks[name] = scores
+    
+    query_name = input()
+    
+    marks = student_marks[query_name]
+    average = sum(marks) / len(marks)
+    
+    print("{:.2f}".format(average))
+
+
+LEETCODE
+TASK
+
+
+Code
+Note
+Note
+Testcase
+Testcase
+Test Result
+3. Longest Substring Without Repeating Characters
+Medium
+Topics
+premium lock icon
+Companies
+Hint
+Given a string s, find the length of the longest substring without duplicate characters.
+
+ 
+
+Example 1:
+
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+Example 2:
+
+Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+Example 3:
+
+Input: s = "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3.
+Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+ 
+
+Constraints:
+
+0 <= s.length <= 5 * 104
+s consists of English letters, digits, symbols and spaces.
+***********************************************************************************************
+SOLUTION:
+
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        seen = set()
+        left = 0
+        maxLength = 0
+
+        for right in range(len(s)):
+            while s[right] in seen:
+                seen.remove(s[left])
+                left += 1
+
+            seen.add(s[right])
+            maxLength = max(maxLength, right - left + 1)
+
+        return maxLength
+
