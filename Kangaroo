@@ -1,0 +1,84 @@
+14/6
+TASK:
+You are choreographing a circus show with various animals. For one act, you are given two kangaroos on a number line ready to jump in the positive direction (ie, toward positive
+infinity).
+. The first kangaroo starts at location tl and moves at a rate of tl meters per jump.
+. The second kangaroo starts at location t2 and moves at a rate of t2 meters per jump.
+
+You have to figure out a way to get both kangaroos at the same location at the same time as part of the show. If it is possible, retum YES, otherwise return NO.
+Example
+x1=2
+v1=1
+
+After one jump, they are both at x = 3. (x1+ v1 = 2+1. x2 + v2 = 1 +2), so the answer is YES.
+Function Description
+
+Complete the function kangaroo in the editor below.
+kangaroo has the following parameter(s):
+. int xl, int vl: starting position and jump distance for kangaroo 1
+. int x2, int v2: starting position and jump distance for kangaroo 2
+
+Returns
+. string: either YES or NO
+
+Input Format
+
+A single line of four space-separated integers denoting the respective values of x1, vl, x2, and v2.
+
+Constraints
+
+. 0≤ x1≤2x≤10000
+. 1≤vl ≤ 10000
+. 1≤ v2 ≤ 10000
+
+Sample Input O
+
+0342
+
+Sample Output O
+
+YES
+
+Explanation O
+
+The two kangaroos jump through the following sequence of locations:
+
+
+From the image, it is clear that the kangaroos meet at the same location (number 12 on the number line) after same number of jumps (4 jumps), and we print YES.
+
+Sample Input 1
+
+0 2 5 3
+Sample Output 1
+
+NO
+Explanation 1
+
+The second kangaroo has a starting location that is ahead (further to the right) of the first kangaroo's starting location (i.e.,x2 >x1 ). Because the second kangaroo moves at a faster rate (meaning v2>v1) and is already ahead of the first kangaroo, the first kangaroo will never be able to catch up. Thus, we print NO.
+*****************************
+CODE:
+******************************
+def kangaroo(x1, v1, x2, v2):
+    if (v1==v2):
+       return "YES" if x1 == x2 else "NO"
+    if (v1 != v2) and (x2-x1) % (v2 - v1) == 0:
+        n = (x2- x1)/ (v2-v1)
+        if n >= 0:
+           return"YES"
+   return "NO"
+if __name__ = '__ main__':]
+  n= map(int, input().split())
+  print(kangaroo(x1, v1, x2, v2))
+*************************
+OUTPUT
+****************************
+CASE0:
+Input (stdin)
+0 3 4 2
+Your Output (stdout)
+YES
+CASE1:
+Input (stdin)
+0 2 5 3
+Your Output (stdout)
+NO
